@@ -1,0 +1,107 @@
+Bai1
+#include <stdio.h>
+#include <math.h>
+
+double ham_mu(float x, int y)
+{
+    double tich = 1;
+    if (y == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        for (int i = 1; i <= abs(y); i++)
+        {
+            tich = tich * x;
+        }
+        if (y > 0)
+        {
+            return tich;
+        }
+        else
+        {
+            return (1 / tich);
+        }
+    }
+}
+int main()
+{
+    int y;
+    float x;
+    printf("Nhap x va y: ");
+    scanf("%f %d", &x, &y);
+    if (x == 0)
+    {
+        if (y <= 0)
+        {
+            printf("Loi phep tinh");
+        }
+        else
+        {
+            printf("%g mu %d bang: 0", x, y);
+        }
+    }
+    else
+    {
+        printf("%g mu %d bang: %g", x, y, ham_mu(x, y));
+    }
+    return 0;
+}
+Bai2
+#include <stdio.h>
+
+long long gt(int x)
+{
+    if (x == 1 || x == 0)
+    {
+        return 1;
+    }
+    return (x * gt(x - 1));
+}
+
+int main()
+{
+    int x;
+    printf("Nhap x: ");
+    scanf("%d", &x);
+    if (x < 0)
+    {
+        printf("x phai lon hon hoac bang khong");
+    }
+    else
+    {
+        printf("%d! = %lld", x, gt(x));
+    }
+    return 0;
+}
+Bai3
+#include <stdio.h>
+
+int fibonacci(int n)
+{
+    if (n == 1 || n == 2)
+    {
+        return 1;
+    }
+    else
+    {
+        return (fibonacci(n - 1) + fibonacci (n - 2));
+    }
+}
+
+int main()
+{
+    int n;
+    printf("Nhap n: ");
+    scanf("%d", &n);
+    if (n <= 0)
+    {
+        printf("n phai lon hon 0");
+    }
+    else
+    {
+        printf("Phan tu thu %d trong day Fibonacci la: %d", n, fibonacci(n));
+    }
+    return 0;
+}
