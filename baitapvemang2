@@ -1,0 +1,182 @@
+Bai5
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <malloc.h>
+
+#define LEN 10
+
+void nhap_mang_1 (int a[LEN])
+{
+    for (int i=0; i<LEN; i++)
+    {
+        scanf ("%d", &a[i]);
+    }
+}
+void bai_5 (int a[LEN], int x)
+{
+    int c=0;
+    for (int i=0; i<LEN; i++)
+    {
+        if (x == a[i])
+        {
+            c++;
+        }
+    }
+    if (c==0)
+    {
+        printf ("Khong ton tai phan tu %d trong mang tren.\n", x);
+    }
+    else
+    {
+        printf ("Phan tu %d xuat hien %d lan trong mang.\n", x, c);
+    }
+}
+int main()
+{
+    int a[LEN];
+    int x;
+    nhap_mang_1(a);
+    scanf("%d", &x);
+    bai_5(a, x);
+    return 0;
+}
+Bai6
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <malloc.h>
+
+#define LEN 10
+
+void nhap_mang_1 (int a[LEN])
+{
+    for (int i=0; i<LEN; i++)
+    {
+        scanf ("%d", &a[i]);
+    }
+}
+void bai_6 (int a[LEN])
+{
+    for (int i=0; i<LEN; i++)
+    {
+        if (a[i] < 0)
+        {
+            a[i] = 0;
+        }
+        printf ("%3d", a[i]);
+    }
+}
+int main()
+{
+    int a[LEN];
+    nhap_mang_1(a);
+    bai_6(a);
+    return 0;
+}
+Bai7
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <malloc.h>
+
+#define LEN 10
+
+void nhap_mang_1 (int a[LEN])
+{
+    for (int i=0; i<LEN; i++)
+    {
+        scanf ("%d", &a[i]);
+    }
+}
+void swap (int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void bai_7 (int a[LEN])
+{
+    for (int i=LEN-1; i>0; i--)
+    {
+        for (int j=0; j<i; j++)
+        {
+            if (a[j] > a[j+1])
+            {
+                swap(&a[j], &a[j+1]);
+            }
+        }
+    }
+}
+void xuat_mang_1 (int a[LEN])
+{
+    for (int i=0; i<LEN; i++)
+    {
+        printf ("%d\t", a[i]);
+    }
+    printf ("\n");
+}
+int main()
+{
+    int a[LEN];
+    nhap_mang_1(a);
+    bai_7(a);
+    xuat_mang_1(a);
+    return 0;
+}
+Bai8
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <malloc.h>
+
+#define LEN_A 3
+#define LEN_B 6
+
+void nhap_mang_1 (int a[], int len)
+{
+    for (int i=0; i<len; i++)
+    {
+        scanf ("%d", &a[i]);
+    }
+}
+void bai_8 (int a[LEN_A], int b[LEN_B])
+{
+    int i=0, j=0;
+    while (i < LEN_A && j < LEN_B)
+    {
+        if (b[j] > a[i])
+        {
+            printf("%d ", a[i]);
+            i++;
+        }
+        if (b[j] < a[i])
+        {
+            printf("%d ", b[j]);
+            j++;
+        }
+    }
+    while (i < LEN_A)
+    {
+        printf("%d ", a[i]);
+        i++;
+    }
+    while (j < LEN_B)
+    {
+        printf("%d ", b[j]);
+        j++;
+    }
+}
+
+int main()
+{
+    int a[LEN_A], b[LEN_B];
+    nhap_mang_1(a, LEN_A);
+    nhap_mang_1(b, LEN_B);
+    bai_8(a, b);
+    return 0;
+}
