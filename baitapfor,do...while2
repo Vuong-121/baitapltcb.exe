@@ -1,0 +1,314 @@
+Bai8
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+void input (int *a)
+{
+    printf("Ban hay nhap 1 so nguyen duong bat ki: ");
+    scanf("%d", a);
+    while(*a <= 0)
+    {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%d", a);
+    }
+}
+
+int main()
+{
+    int a;
+    input(&a);
+    int S = 1;
+    for (int i=1; i<=a; i++)
+    {
+        S *= i;
+    }
+    printf("%d! = %d\n", a, S);
+    return 0;
+}
+Bai9
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+void input (int *a)
+{
+    printf("Ban hay nhap 1 so nguyen duong bat ki: ");
+    scanf("%d", a);
+    while(*a <= 0)
+    {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%d", a);
+    }
+}
+int main()
+{
+    int a;
+    input(&a);
+    double S = 0;
+    for (int i=1; i<=a; i++)
+    {
+        int n = 1;
+        for (int j = 1; j<=i; j++)
+        {
+            n *= j;
+        }
+        S += 1.0/n;
+    }
+    printf("S = %lf\n", S);
+    return 0;
+}
+Bai10
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+void input (int *a)
+{
+    printf("Ban muon biet so thu bao nhieu cua day Fibonaci: ");
+    scanf("%d", a);
+    while(*a <= 0)
+    {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%d", a);
+    }
+}
+int main()
+{
+    int n, i, F1, F2, Fi;
+    input(&n);
+    F1 = 1;
+    F2 = 1;
+    for (i=3; i<=n; i++)
+    {
+        Fi = F1 + F2;
+        F1 = F2;
+        F2 = Fi;
+    }
+    printf("So Fibonaci thu %d la: %d\n", n, F2);
+    return 0;
+}
+Bai11
+#include <stdio.h>
+#include <stdlib.h>
+
+void input(int *a) {
+    printf("Ban hay nhap mot so nguyen duong n: ");
+    scanf("%d", a);
+    while (*a <= 0) {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%d", a);
+    }
+}
+
+void dec_to_bin(int n) {
+    for (int i = 31; i >= 0; i--) {
+        printf("%d", (n >> i) & 1);
+    }
+    printf("\n");
+}
+
+void dec_to_oct(int n) {
+    int a[32] = {0};
+    int r, i = 0;
+    while (n != 0) {
+        r = n % 8;
+        a[i++] = r;
+        n /= 8;
+    }
+    for (int j = 31; j >= 0; j--) {
+        printf("%d", a[j]);
+    }
+    printf("\n");
+}
+
+void dec_to_hex(int n) {
+    char a[32] = {0};
+    char b[] = "0123456789ABCDEF";
+    int r, i = 0;
+    while (n != 0) {
+        r = n % 16;
+        a[i++] = b[r];
+        n /= 16;
+    }
+    printf("%032s\n",a);
+}
+
+int main() {
+    int n;
+    input(&n);
+    dec_to_bin(n);
+    dec_to_oct(n);
+    dec_to_hex(n);
+    return 0;
+}
+Bai12
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <malloc.h>
+
+void input (double *a, double *b)
+{
+    printf("Ban hay nhap mot so x va do chinh xac esp: ");
+    scanf("%lf", a);
+    scanf("%lf", b);
+    while(*b < 0)
+    {
+        printf("\nGia tri esp khong hop le.\nVui long nhap lai: ");
+        scanf("%lf", b);
+    }
+}
+
+void bai_12 (double x, double esp)
+{
+    printf("Sin(%0.lf) = ", x);
+    x = x*3.14/180;
+    double Sin = 0;
+    int i = 0, k = 1, n = 1;
+    do
+    {
+        for (int j=1; j<=2*i+1; j++)
+        {
+            k *= j;
+        }
+        n = pow(-1,i) * ((pow(x, 2*i+1))/k);
+        Sin += n;
+        i++;
+    }
+    while (n>esp);
+    printf("%lf", Sin);
+}
+int main()
+{
+    double esp, x;
+    input(&x, &esp);
+    bai_12(x, esp);
+    return 0;
+}
+Bai13
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <malloc.h>
+
+void input (double *a, double *b)
+{
+    printf("Ban hay nhap mot so x va do chinh xac esp: ");
+    scanf("%lf", a);
+    scanf("%lf", b);
+    while(*b < 0)
+    {
+        printf("\nGia tri esp khong hop le.\nVui long nhap lai: ");
+        scanf("%lf", b);
+    }
+}
+
+void bai_13 (double x, double esp)
+{
+    printf("e mu %0.lf = ", x);
+    double y = 1;
+    int i = 0, k = 1, n;
+    do
+    {
+        for (int j=1; j<=i; j++)
+        {
+            k *= j;
+        }
+        n = pow(x,i)/k;
+        y += n;
+        i++;
+    }
+    while (n>esp);
+    printf("%lf", y);
+}
+int main()
+{
+    double esp, x;
+    input(&x, &esp);
+    bai_13(x, esp);
+    return 0;
+}
+Bai14
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <malloc.h>
+
+void input (double *a, double *b)
+{
+    printf("Ban hay nhap tong thu nhap GDP va toc do tang truong kinh te binh quan: ");
+    scanf("%lf", a);
+    scanf("%lf", b);
+    while(*a < 0)
+    {
+        printf("\nGia tri GDP khong hop le.\nVui long nhap lai: ");
+        scanf("%lf", a);
+    }
+}
+
+void bai_14 (double GDP, double v)
+{
+    int y = 2014;
+    double GDP_2014 = GDP;
+    printf("Nam\t\tGDP\n");
+    printf("%d\t\t%.1lf\n", y++, GDP_2014);
+    while (GDP <= 2*GDP_2014)
+    {
+        GDP = GDP + GDP*v/100;
+        printf("%d\t\t%.1lf\n", y++, GDP);
+    }
+}
+int main()
+{
+    double GDP, v;
+    input(&GDP, &v);
+    bai_14(GDP, v);
+    return 0;
+}
+Bai15
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <malloc.h>
+
+void input (double *a, int *b)
+{
+    printf("Ban hay nhap so tien gui va so thang: ");
+    scanf("%lf", a);
+    scanf("%d", b);
+    while(*a <= 0)
+    {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%lf", a);
+    }
+    while(*b <= 0)
+    {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%d", b);
+    }
+}
+
+void bai_15 (double m, int n)
+{
+    double l = 0.45/100;
+    for (int i=0; i<n; i++)
+    {
+        m = m + l*m;
+    }
+    printf("Sau %d thang, nguoi do rut duoc %lf VND.\n", n, m);
+}
+int main()
+{
+    double m;
+    int n;
+    input(&m, &n);
+    bai_15(m, n);
+    return 0;
+}
+
+
+
+
+
