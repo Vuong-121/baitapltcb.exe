@@ -1,0 +1,220 @@
+Bai5
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    double a, b, c;
+    printf("Ban hay nhap he so cua phuong trinh bac hai: ");
+    scanf("%lf %lf %lf", &a, &b, &c);
+    double delta = pow(b,2)-(4*a*c);
+    if (a!=0)
+    {
+        if (delta>0)
+        {
+            printf("Phuong trinh co 2 nghiem phan biet\n");
+            printf("x1 = %.5lf\n",(((-b)-sqrt(delta))/(2*a)));
+            printf("x2 = %.5lf\n",(((-b)+sqrt(delta))/(2*a)));
+        }
+        else if (delta<0)
+        {
+            printf("Phuong trinh vo nghiem");
+        }
+        else
+        {
+            printf("Phuong trinh co nghiem kep\n");
+            printf("x1 = x2 = %.5lf",((-b)/(2*a)));
+        }
+    }
+    else
+    {
+        if (b==0)
+        {
+            if (c==0)
+            {
+                printf("Moi x la nghiem");
+            }
+            else
+            {
+                printf("Phuong trinh vo nghiem");
+            }
+        }
+        else
+        {
+            printf("Phuong trinh co 1 nghiem don\n");
+            printf("x = %.5lf",((-c)/b));
+        }
+    }
+ 
+    return 0;
+}
+Bai6
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    double a,b,c,d,e,f;
+    printf("Ban hay nhap he so cua phuong trinh thu nhat: ");
+    scanf("%lf %lf %lf",&a,&b,&c);
+    printf("Ban hay nhap he so cua phuong trinh thu hai: ");
+    scanf("%lf %lf %lf",&d,&e,&f);
+    printf("\n");
+    double det = (a*e) - (b*d);
+    if (det == 0)
+    {
+        if (((a * f) == (d * c)) && ((b * f) == (e * c)))
+        {
+            printf("He phuong trinh co vo so nghiem");
+        }
+        else
+        {
+            printf("He phuong trinh vo nghiem");
+        }
+    }
+    else
+    {
+        printf("He phuong trinh co nghiem duy nhat\n");
+        printf("x = %.05lf\ny = %.05lf",((e * c - b * f) / det),((a * f - d * c) / det));
+    }
+    return 0;
+}
+Bai7
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    double x;
+    printf("Hay nhap diem trung binh (DTB) cua ban: ");
+    scanf("%lf", &x);
+    printf("\n");
+    while (x>10 || x<0)
+    {
+        printf("Gia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%lf", &x);
+        printf("\n");
+    }
+    if (x < 5)
+    {
+        printf("Xep loai: Yeu");
+    }
+    else if (x>=5 && x<7)
+    {
+        printf("Xep loai: Trung binh");
+    }
+    else if (x>=7 && x<8)
+    {
+        printf("Xep loai: Kha");
+    }
+    else if (x>=8 && x<9)
+    {
+        printf("Xep loai: Gioi");
+    }
+    else
+    {
+        printf("Xep loai: Xuat sac");
+    }
+    return 0;
+}
+Bai8
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+typedef struct
+{
+    double a;
+    double b;
+    double c;
+} TamGiac;
+void input (TamGiac *t)
+{
+    scanf("%lf %lf %lf", &t->a, &t->b, &t->c);
+    while (t->a <= 0 || t->b <= 0 || t->c <= 0)
+    {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%lf %lf %lf", &t->a, &t->b, &t->c);
+    }
+}
+void kt_TamGiac (TamGiac t)
+{
+    if ((t.a+t.b)<=t.c || (t.a+t.c)<=t.b || (t.b+t.c)<=t.a)
+    {
+        printf("Day khong phai la tam giac.\n");
+    }
+    else
+    {
+        if (t.a==t.b && t.b==t.c && t.a==t.c)
+        {
+            printf("Day la tam giac deu.\n");
+        }
+        else if (t.a==t.b || t.b==t.c || t.a==t.c)
+        {
+            if (pow(t.a,2) + pow(t.b,2) == pow(t.c,2) || pow(t.a,2) + pow(t.c,2) == pow(t.b,2) || pow(t.b,2) + pow(t.c,2) == pow(t.a,2))
+            {
+                printf("Day la tam giac vuong can.\n");
+            }
+            else
+            {
+                printf("Day la tam giac can.\n");
+            }
+        }
+        else if (pow(t.a,2) + pow(t.b,2) == pow(t.c,2) || pow(t.a,2) + pow(t.c,2) == pow(t.b,2) || pow(t.b,2) + pow(t.c,2) == pow(t.a,2))
+        {
+            printf("Day la tam giac vuong.\n");
+        }
+        else
+        {
+            printf("Day la tam giac thuong.\n");
+        }
+    }
+}
+void tinh_P (TamGiac t)
+{
+    printf("Chu vi = %lf\n", t.a+t.b+t.c);
+}
+void tinh_S (TamGiac t)
+{
+    double s = (t.a+t.b+t.c)/2;
+    printf("Dien tich = %lf\n", sqrt(s * (s - t.a) * (s - t.b) * (s - t.c)));
+}
+int main()
+{
+    TamGiac t;
+    printf("Ban hay nhap gia tri 3 canh cua tam giac: ");
+    input(&t);
+    kt_TamGiac(t);
+    tinh_P(t);
+    tinh_S(t);
+    return 0;
+}
+Bai9
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+void input (int *m, int *y)
+{
+    printf("Ban hay nhap lan luot gia tri thang & nam: ");
+    scanf("%d %d", m, y);
+    while (*m<1 || *y<1 || *m>12)
+    {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%d %d", m, y);
+    }
+}
+void output (int m, int y)
+{
+    int Max_day[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (y%400 == 0 || (y%4 == 0 && y%100 != 0))
+    {
+        Max_day[2] = 29;
+    }
+    printf("Thang %d nam %d co %d ngay.\n", m, y, Max_day[m]);
+}
+int main()
+{
+    int m, y;
+    input(&m, &y);
+    output(m, y);
+    return 0;
+}
