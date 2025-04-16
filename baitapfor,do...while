@@ -1,0 +1,219 @@
+Bai1
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    int sum=0;
+    printf("Ban hay nhap 10 so nguyen bat ki: ");
+    for (int i=0; i<10; i++)
+    {
+        int a;
+        scanf("%d", &a);
+        sum += a;
+    }
+    printf("Tong cua 10 so nguyen do la: %d\n", sum);
+    return 0;
+}
+Bai2
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+void kt_so_NT (int x)
+{
+    if (x < 2)
+    {
+        printf ("%d khong phai so nguyen to\n",x);
+        return;
+    }
+    int a = 1;
+    for (int i=2; i<= sqrt(x); i++)
+    {
+        if (x % i == 0)
+        {
+            a = 0;
+            break;
+        }
+    }
+    if (a == 1)
+    {
+        printf ("%d la so nguyen to\n",x);
+    }
+    else
+    {
+        printf ("%d khong phai so nguyen to\n",x);
+    }
+}
+int main()
+{
+    int a;
+    printf("Ban hay nhap 1 so nguyen bat ki: ");
+    scanf("%d", &a);
+    kt_so_NT(a);
+    return 0;
+}
+Bai3
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    for (int i=1; i<=20; i++)
+    {
+        if (i%2 == 0)
+        {
+            printf("%d", i);
+            if(i != 20)
+            {
+                printf("\t");
+            }
+        }
+    }
+    return 0;
+}
+Bai4
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    int sum=0;
+    for (int i=1; i<=100; i++)
+    {
+        if (i%2 != 0)
+        {
+            sum += i;
+        }
+    }
+    printf("Tong cua cac so le tu 1 den 100 bang: %d", sum);
+    return 0;
+}
+Bai5
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    int n;
+    printf("Ban hay nhap vao 1 so tu nhien n: ");
+    scanf("%d", &n);
+    while(n<0)
+    {
+        printf("Vui long nhap vao mot so tu nhien (n >= 0): ");
+        scanf("%d", &n);
+    }
+    if (n == 0)
+    {
+        printf("So 0 co vo so uoc khac 0.\n");
+    }
+    else
+    {
+        for (int i=1; i<=n; i++)
+        {
+            if(n%i == 0)
+            {
+                printf("%d", i);
+                if(i != n)
+                {
+                    printf(", ");
+                }
+            }
+        }
+        printf(" la cac uoc so cua %d.\n", n);
+    }
+    return 0;
+}
+Bai6.1
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int tim_GCD (int a, int b)
+{
+    int c = abs(a);
+    int d = abs(b);
+    int r;
+    while (d != 0)
+    {
+        r = c % d;
+        c = d;
+        d = r;
+    }
+    return c;
+}
+int tim_LCM (int a, int b)
+{
+    return ((a/tim_GCD(a, b))*b);
+}
+int main()
+{
+    int a, b;
+    printf("Hay nhap vao 2 so nguyen bat ki: ");
+    scanf("%d %d", &a, &b);
+    printf("Uoc chung lon nhat cua 2 so nguyen do la: %d\nBoi chung nho nhat cua 2 so nguyen do la: %d\n", tim_GCD(a, b), tim_LCM(a, b));
+    return 0;
+}
+Bai6.2
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+void input (int *a)
+{
+    printf("Ban hay nhap 1 so nguyen duong bat ki: ");
+    scanf("%d", a);
+    while(*a <= 0)
+    {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%d", a);
+    }
+}
+void kt_so_hoan_hao (int a)
+{
+    int sum = 0;
+    for (int i=1; i<=a; i++)
+    {
+        if (a%i == 0)
+        {
+            sum += i;
+        }
+    }
+    if (sum/2 == a)
+    {
+        printf("%d la so hoan hao.\n", a);
+    }
+    else
+        printf("%d khong la so hoan hao.\n", a);
+}
+int main()
+{
+    int a;
+    input(&a);
+    kt_so_hoan_hao(a);
+    return 0;
+}
+Bai7
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+void input (int *a)
+{
+    printf("Ban hay nhap 1 so nguyen duong bat ki: ");
+    scanf("%d", a);
+    while(*a <= 0)
+    {
+        printf("\nGia tri khong hop le.\nVui long nhap lai: ");
+        scanf("%d", a);
+    }
+}
+
+int main()
+{
+    int a;
+    input(&a);
+    double S = 0;
+    for (int i=1; i<=a; i++)
+    {
+        S += 1/(float)i;
+    }
+    printf("S = %lf\n", S);
+    return 0;
+}
